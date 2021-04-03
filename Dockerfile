@@ -1,7 +1,7 @@
-# 19.01.20現在最新安定版のイメージを取得
-FROM ruby:2.5.3
+# 21.4.2現在最新安定版のイメージ
+FROM ruby:3.0.0
 
-# 必要なパッケージのインストール（基本的に必要になってくるものだと思うので削らないこと）
+# 必要なパッケージのインストール
 RUN apt-get update -qq && \
     apt-get install -y build-essential \ 
                        libpq-dev \        
@@ -13,7 +13,7 @@ RUN mkdir /ruby-app
 ENV APP_ROOT /ruby-app 
 WORKDIR $APP_ROOT
 
-# ホスト側（ローカル）のGemfileを追加する（ローカルのGemfileは【３】で作成）
+# ホスト側（ローカル）のGemfileを追加する
 ADD ./Gemfile $APP_ROOT/Gemfile
 ADD ./Gemfile.lock $APP_ROOT/Gemfile.lock
 
